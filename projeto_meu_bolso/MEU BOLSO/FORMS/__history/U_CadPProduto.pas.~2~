@@ -1,0 +1,37 @@
+unit U_CadPProduto;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, U_CadPadrao, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.DBCtrls, Vcl.ExtCtrls;
+
+type
+  Tfrm_CadPProduto = class(Tfrm_CadPadrao)
+    Q_PadraoID_PRODUTO: TFDAutoIncField;
+    Q_PadraoPRODUTO_DESCRICAO: TStringField;
+    Q_PadraoVL_CUSTO: TFMTBCDField;
+    Q_PadraoVL_VENDA: TFMTBCDField;
+    Q_PadraoESTOQUE: TFMTBCDField;
+    Q_PadraoESTOQUE_MIN: TFMTBCDField;
+    Q_PadraoUNIDADE: TStringField;
+    Q_PadraoCADASTRO: TDateField;
+    Q_PadraoID_FORNECEDOR: TIntegerField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_CadPProduto: Tfrm_CadPProduto;
+
+implementation
+
+{$R *.dfm}
+
+end.

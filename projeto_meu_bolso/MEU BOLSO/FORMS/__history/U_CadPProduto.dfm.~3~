@@ -1,0 +1,102 @@
+inherited frm_CadPProduto: Tfrm_CadPProduto
+  Caption = 'ED_DEVELOPER - TELA PRODUTO'
+  ClientWidth = 793
+  ExplicitWidth = 805
+  TextHeight = 15
+  inherited Panel2: TPanel
+    Width = 793
+    ExplicitTop = 361
+    inherited btn_Navigator: TDBNavigator
+      Width = 629
+      Hints.Strings = ()
+    end
+  end
+  inherited Panel3: TPanel
+    Width = 793
+    ExplicitHeight = 312
+  end
+  inherited Panel1: TPanel
+    Width = 793
+  end
+  inherited Q_Padrao: TFDQuery
+    UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
+    UpdateOptions.FetchGeneratorsPoint = gpImmediate
+    UpdateOptions.GeneratorName = 'GEN_ID_PRODUTO'
+    UpdateOptions.AutoIncFields = 'ID_PRODUTO'
+    SQL.Strings = (
+      'SELECT A.ID_PRODUTO,'
+      '       A.PRODUTO_DESCRICAO,'
+      '       A.VL_CUSTO,'
+      '       A.VL_VENDA,'
+      '       A.ESTOQUE,'
+      '       A.ESTOQUE_MIN,'
+      '       A.UNIDADE,'
+      '       A.CADASTRO,'
+      '       A.ID_FORNECEDOR'
+      ' FROM PRODUTO A, FORNECEDOR B'
+      ' WHERE A.ID_FORNECEDOR=B.ID_FORNECEDOR')
+    Left = 728
+    Top = 65
+    object Q_PadraoID_PRODUTO: TFDAutoIncField
+      FieldName = 'ID_PRODUTO'
+      Origin = 'ID_PRODUTO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      IdentityInsert = True
+    end
+    object Q_PadraoID_FORNECEDOR: TIntegerField
+      FieldName = 'ID_FORNECEDOR'
+      Origin = 'ID_FORNECEDOR'
+      Required = True
+    end
+    object Q_PadraoPRODUTO_DESCRICAO: TStringField
+      FieldName = 'PRODUTO_DESCRICAO'
+      Origin = 'PRODUTO_DESCRICAO'
+      Required = True
+      Size = 100
+    end
+    object Q_PadraoVL_CUSTO: TFMTBCDField
+      FieldName = 'VL_CUSTO'
+      Origin = 'VL_CUSTO'
+      Required = True
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object Q_PadraoVL_VENDA: TFMTBCDField
+      FieldName = 'VL_VENDA'
+      Origin = 'VL_VENDA'
+      Required = True
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object Q_PadraoESTOQUE: TFMTBCDField
+      FieldName = 'ESTOQUE'
+      Origin = 'ESTOQUE'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+    object Q_PadraoESTOQUE_MIN: TFMTBCDField
+      FieldName = 'ESTOQUE_MIN'
+      Origin = 'ESTOQUE_MIN'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+    object Q_PadraoUNIDADE: TStringField
+      FieldName = 'UNIDADE'
+      Origin = 'UNIDADE'
+      Size = 6
+    end
+    object Q_PadraoCADASTRO: TDateField
+      FieldName = 'CADASTRO'
+      Origin = 'CADASTRO'
+      Required = True
+    end
+  end
+  inherited DS_Padrao: TDataSource
+    Left = 728
+    Top = 161
+  end
+end

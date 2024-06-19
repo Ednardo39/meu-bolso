@@ -1,0 +1,84 @@
+unit U_Compra01;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, U_PadraoMovimento, Data.DB,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.DBCtrls,
+  Vcl.ExtCtrls, Vcl.Mask;
+
+type
+  Tfrm_Compra01 = class(Tfrm_PadraoMovimento)
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label8: TLabel;
+    Bt_Check_Fornecedor: TBitBtn;
+    bt_busca_forma_pgto: TBitBtn;
+    Q_PadraoID_COMPRAA: TFDAutoIncField;
+    Q_PadraoID_FORNECEDOR: TIntegerField;
+    Q_PadraoID_FORMA_PGTO: TIntegerField;
+    Q_PadraoUSUARIO: TStringField;
+    Q_PadraoVALOR: TFMTBCDField;
+    Q_PadraoCADASTRO: TDateField;
+    txt_IdCompra: TDBEdit;
+    txt_IdFormaPGTO: TDBEdit;
+    txt_Cadastro: TDBEdit;
+    txt_Usuario: TDBEdit;
+    txt_Valor: TDBEdit;
+    txt_IdFornecedor: TDBEdit;
+    Q_Fornecedor: TFDQuery;
+    Q_FormaPgto: TFDQuery;
+    ds_Fornecedor: TDataSource;
+    ds_FormaPgto: TDataSource;
+    Q_FornecedorID_FORNECEDOR: TIntegerField;
+    Q_FornecedorNOME: TStringField;
+    Q_FormaPgtoID_FORMA_PGTO: TIntegerField;
+    Q_FormaPgtoDESCRICAO: TStringField;
+    Q_PadraoNOME: TStringField;
+    Q_PadraoDESCRICAO: TStringField;
+    Label7: TLabel;
+    Label9: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
+    DBLookupComboBox2: TDBLookupComboBox;
+    procedure btn_NovoClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_Compra01: Tfrm_Compra01;
+
+implementation
+
+{$R *.dfm}
+
+procedure Tfrm_Compra01.btn_NovoClick(Sender: TObject);
+begin
+  inherited;
+//  Q_padrao.Open;
+//  Q_fornecedor.Open;
+//  Q_forma_pgto.Open;
+//  db_cadastro.Text:=datetostr(now);
+//  db_usuario.Text:=dm.usuario;
+//  db_valor.Text:=inttostr(0);
+//  db_id_fornecedor.SetFocus;
+//  db_cond_pgto.Text:=inttostr(1);
+
+   Q_PadraoCADASTRO.AsDateTime:=Date;
+//   Q_PadraoUSUARIO.AsString:=DM.USUARIO;
+   Q_PadraoUSUARIO.AsString:='EU';
+   txt_IdFornecedor.SetFocus;
+//   txt_Valor.Text:=inttostr(0);
+   Q_PadraoVALOR.AsCurrency:=0;
+end;
+
+end.

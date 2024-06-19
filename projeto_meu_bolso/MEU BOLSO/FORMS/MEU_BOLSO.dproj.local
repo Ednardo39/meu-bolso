@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/04/20 18:50:42.000.398,=C:\Users\Ednardo_Laptop\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/06/15 21:58:51.000.691,=C:\Users\Ednardo_Laptop\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/06/15 22:05:47.000.561,C:\Users\Ednardo_Laptop\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\MEU BOLSO\FORMS\U_CadDespesas.pas</Transaction>
+    <Transaction>2024/06/15 22:05:47.000.561,C:\Users\Ednardo_Laptop\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\MEU BOLSO\FORMS\U_CadDespesas.dfm</Transaction>
+    <Transaction>2024/06/15 22:06:00.000.306,C:\Users\Ednardo_Laptop\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\MEU BOLSO\FORMS\MEU_BOLSO.dproj</Transaction>
+    <Transaction>2024/06/16 09:38:30.000.467,=C:\MEU BOLSO\FORMS\Unit1.pas</Transaction>
+    <Transaction>2024/06/16 09:40:12.000.854,C:\MEU BOLSO\FORMS\U_DM.dfm=C:\MEU BOLSO\FORMS\Unit1.dfm</Transaction>
+    <Transaction>2024/06/16 09:40:12.000.854,C:\MEU BOLSO\FORMS\U_DM.pas=C:\MEU BOLSO\FORMS\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

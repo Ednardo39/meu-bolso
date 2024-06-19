@@ -1,0 +1,77 @@
+unit U_Pesq_Padrao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask,
+  Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, frxClass, frxDBSet;
+
+type
+  TFrm_pesquisa_Padrao = class(TForm)
+    Panel1: TPanel;
+    Label1: TLabel;
+    lb_nome: TLabel;
+    lb_inicio: TLabel;
+    lb_fim: TLabel;
+    cb_chave_pesquisa: TComboBox;
+    ed_nome: TEdit;
+    mk_inicio: TMaskEdit;
+    mk_fim: TMaskEdit;
+    bt_Pesquisa: TBitBtn;
+    bt_Transferir: TBitBtn;
+    bt_Imprimir: TBitBtn;
+    Frm_pesquisa_padrao: TDBGrid;
+    ds_pesq_padrao: TDataSource;
+    Q_pesq_padrao: TFDQuery;
+    DatSET_pesq_padrao: TfrxDBDataset;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormShow(Sender: TObject);
+    procedure Frm_pesquisa_padraoDblClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    codigo : integer;
+  end;
+
+var
+  Frm_pesquisa_Padrao: TFrm_pesquisa_Padrao;
+
+implementation
+
+{$R *.dfm}
+
+uses U_DM;
+
+procedure TFrm_pesquisa_Padrao.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+ Q_pesq_padrao.Close;
+end;
+
+procedure TFrm_pesquisa_Padrao.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+/// faz a função do tab
+ if key=#13 then
+    begin
+      Key:=#0;
+      Perform(wm_nextDlgCtl,0,0);
+    end;
+end;
+
+procedure TFrm_pesquisa_Padrao.FormShow(Sender: TObject);
+begin
+Q_pesq_padrao.Close;
+end;
+
+procedure TFrm_pesquisa_Padrao.Frm_pesquisa_padraoDblClick(Sender: TObject);
+begin
+  bt_Transferir.Click;
+end;
+
+end.

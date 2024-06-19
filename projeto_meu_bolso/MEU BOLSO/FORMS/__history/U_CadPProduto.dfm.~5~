@@ -1,0 +1,208 @@
+inherited frm_CadPProduto: Tfrm_CadPProduto
+  Caption = 'ED_DEVELOPER - TELA PRODUTO'
+  ClientWidth = 793
+  ExplicitWidth = 805
+  TextHeight = 15
+  inherited Panel2: TPanel
+    Width = 793
+    ExplicitTop = 361
+    inherited btn_Navigator: TDBNavigator
+      Width = 629
+      Hints.Strings = ()
+    end
+  end
+  inherited Panel3: TPanel
+    Width = 793
+    ExplicitHeight = 312
+    object Panel4: TPanel
+      Left = 106
+      Top = 16
+      Width = 623
+      Height = 291
+      TabOrder = 0
+      object Label2: TLabel
+        Left = 16
+        Top = 8
+        Width = 69
+        Height = 15
+        Caption = 'ID_PRODUTO'
+        FocusControl = DBEdit1
+      end
+      object Label3: TLabel
+        Left = 16
+        Top = 56
+        Width = 121
+        Height = 15
+        Caption = 'PRODUTO_DESCRICAO'
+        FocusControl = DBEdit2
+      end
+      object Label4: TLabel
+        Left = 212
+        Top = 8
+        Width = 60
+        Height = 15
+        Caption = 'CADASTRO'
+        FocusControl = DBEdit3
+      end
+      object Label5: TLabel
+        Left = 16
+        Top = 104
+        Width = 54
+        Height = 15
+        Caption = 'VL_CUSTO'
+        FocusControl = DBEdit4
+      end
+      object Label6: TLabel
+        Left = 141
+        Top = 104
+        Width = 56
+        Height = 15
+        Caption = 'VL_VENDA'
+        FocusControl = DBEdit5
+      end
+      object Label7: TLabel
+        Left = 264
+        Top = 104
+        Width = 49
+        Height = 15
+        Caption = 'ESTOQUE'
+        FocusControl = DBEdit6
+      end
+      object DBEdit1: TDBEdit
+        Left = 16
+        Top = 24
+        Width = 174
+        Height = 23
+        DataField = 'ID_PRODUTO'
+        DataSource = DS_Padrao
+        TabOrder = 0
+      end
+      object DBEdit2: TDBEdit
+        Left = 16
+        Top = 72
+        Width = 350
+        Height = 23
+        DataField = 'PRODUTO_DESCRICAO'
+        DataSource = DS_Padrao
+        TabOrder = 1
+      end
+      object DBEdit3: TDBEdit
+        Left = 212
+        Top = 24
+        Width = 154
+        Height = 23
+        DataField = 'CADASTRO'
+        DataSource = DS_Padrao
+        TabOrder = 2
+      end
+      object DBEdit4: TDBEdit
+        Left = 16
+        Top = 120
+        Width = 100
+        Height = 23
+        DataField = 'VL_CUSTO'
+        DataSource = DS_Padrao
+        TabOrder = 3
+      end
+      object DBEdit5: TDBEdit
+        Left = 141
+        Top = 120
+        Width = 100
+        Height = 23
+        DataField = 'VL_VENDA'
+        DataSource = DS_Padrao
+        TabOrder = 4
+      end
+      object DBEdit6: TDBEdit
+        Left = 264
+        Top = 120
+        Width = 100
+        Height = 23
+        DataField = 'ESTOQUE'
+        DataSource = DS_Padrao
+        TabOrder = 5
+      end
+    end
+  end
+  inherited Panel1: TPanel
+    Width = 793
+  end
+  inherited Q_Padrao: TFDQuery
+    UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
+    SQL.Strings = (
+      'SELECT A.ID_PRODUTO,'
+      '       A.PRODUTO_DESCRICAO,'
+      '       A.VL_CUSTO,'
+      '       A.VL_VENDA,'
+      '       A.ESTOQUE,'
+      '       A.ESTOQUE_MIN,'
+      '       A.UNIDADE,'
+      '       A.CADASTRO,'
+      '       A.ID_FORNECEDOR'
+      ' FROM PRODUTO A, FORNECEDOR B'
+      ' WHERE A.ID_FORNECEDOR=B.ID_FORNECEDOR')
+    Left = 728
+    Top = 65
+    object Q_PadraoID_PRODUTO: TIntegerField
+      FieldName = 'ID_PRODUTO'
+      Origin = 'ID_PRODUTO'
+      ProviderFlags = [pfInWhere, pfInKey]
+      Required = True
+    end
+    object Q_PadraoID_FORNECEDOR: TIntegerField
+      FieldName = 'ID_FORNECEDOR'
+      Origin = 'ID_FORNECEDOR'
+      Required = True
+    end
+    object Q_PadraoPRODUTO_DESCRICAO: TStringField
+      FieldName = 'PRODUTO_DESCRICAO'
+      Origin = 'PRODUTO_DESCRICAO'
+      Required = True
+      Size = 100
+    end
+    object Q_PadraoVL_CUSTO: TFMTBCDField
+      FieldName = 'VL_CUSTO'
+      Origin = 'VL_CUSTO'
+      Required = True
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object Q_PadraoVL_VENDA: TFMTBCDField
+      FieldName = 'VL_VENDA'
+      Origin = 'VL_VENDA'
+      Required = True
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object Q_PadraoESTOQUE: TFMTBCDField
+      FieldName = 'ESTOQUE'
+      Origin = 'ESTOQUE'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+    object Q_PadraoESTOQUE_MIN: TFMTBCDField
+      FieldName = 'ESTOQUE_MIN'
+      Origin = 'ESTOQUE_MIN'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+    object Q_PadraoUNIDADE: TStringField
+      FieldName = 'UNIDADE'
+      Origin = 'UNIDADE'
+      Size = 6
+    end
+    object Q_PadraoCADASTRO: TDateField
+      FieldName = 'CADASTRO'
+      Origin = 'CADASTRO'
+      Required = True
+    end
+  end
+  inherited DS_Padrao: TDataSource
+    Left = 728
+    Top = 161
+  end
+end

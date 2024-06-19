@@ -1,0 +1,33 @@
+program ED_DEVELOPER_CONTROLE_DE_ESTOQUE;
+
+uses
+  Vcl.Forms,
+  U_Principal in '..\FORMS\U_Principal.pas' {frm_Principal},
+  U_DM in '..\FORMS\U_DM.pas' {DM: TDataModule},
+  U_CadPadrao in '..\FORMS\U_CadPadrao.pas' {frm_CadPadrao},
+  U_CadUsuario in '..\FORMS\U_CadUsuario.pas' {frm_CadUsuario},
+  U_CadEmpresa in '..\FORMS\U_CadEmpresa.pas' {frm_CadEmpresa},
+  U_CadCliente in '..\FORMS\U_CadCliente.pas' {frm_CadCliente},
+  U_CadFornecedor in '..\FORMS\U_CadFornecedor.pas' {frm_CadFornecedor},
+  U_CadProduto in '..\FORMS\U_CadProduto.pas' {frm_CadProduto},
+  U_Forma_Pgto in '..\FORMS\U_Forma_Pgto.pas' {Frm_Forma_pgto},
+  U_Pesq_Padrao in '..\FORMS\U_Pesq_Padrao.pas' {Frm_pesquisa_Padrao},
+  U_Pesq_Usuario in '..\FORMS\U_Pesq_Usuario.pas' {Frm_pesquisa_Usuario},
+  U_Pesq_Cliente in '..\FORMS\U_Pesq_Cliente.pas' {Frm_Pesquisa_Cliente},
+  U_Frm_Pesq_Fornecedor in '..\FORMS\U_Frm_Pesq_Fornecedor.pas' {Frm_pesq_Fornecedor},
+  U_Pesq_Produto in '..\FORMS\U_Pesq_Produto.pas' {frm_Pesq_Produto};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(Tfrm_Principal, frm_Principal);
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TFrm_pesquisa_Padrao, Frm_pesquisa_Padrao);
+  Application.CreateForm(TFrm_pesquisa_Usuario, Frm_pesquisa_Usuario);
+  Application.CreateForm(TFrm_Pesquisa_Cliente, Frm_Pesquisa_Cliente);
+  Application.CreateForm(TFrm_pesq_Fornecedor, Frm_pesq_Fornecedor);
+  Application.CreateForm(Tfrm_Pesq_Produto, frm_Pesq_Produto);
+  Application.Run;
+end.

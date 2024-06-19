@@ -1,0 +1,119 @@
+unit U_Pesq_Compra;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, U_Pesq_Padrao, Data.DB,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, frxClass, frxDBSet, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.Mask, Vcl.ExtCtrls;
+
+type
+  Tfrm_pesq_Compra = class(TFrm_pesquisa_Padrao)
+    procedure bt_PesquisaClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_pesq_Compra: Tfrm_pesq_Compra;
+
+implementation
+
+{$R *.dfm}
+
+procedure Tfrm_pesq_Compra.bt_PesquisaClick(Sender: TObject);
+begin
+  Q_pesq_padrao.Close; // fecha
+  Q_pesq_padrao.SQL.Add(''); // limpa
+  Q_pesq_padrao.Params.Clear; // limpamos os parametros
+  Q_pesq_padrao.SQL.Clear; // limPa o sql
+  Q_pesq_padrao.SQL.Add('SELECT A.ID_COMPRA, '
+                      + 'A.ID_FORNECEDOR,    '
+                      + 'B.NOME,           '
+                      + 'A.ID_FORMA_PGTO,    '
+                      + 'C.DESCRICAO,        '
+                      + 'A.USUARIO,          '
+                      + 'A.VALOR,            '
+                      + 'A.CADASTRO          '
+                      + 'FROM COMPRA A       '
+                      + 'INNER JOIN FORNECEDOR B ON B.ID_FORNECEDOR = A.ID_FORNECEDOR '
+                      + 'INNER JOIN FORMA_PGTO C ON C.ID_FORMA_PGTO = A.ID_FORMA_PGTO ');
+
+//                      + 'FORNECEDOR B, FORMA_PGTO C '
+//                      + 'WHERE A.ID_FORNECEDOR = B.ID_FORNECEDOR   '
+//                      + 'AND C.ID_FORMA_PGTO = A.ID_FORMA_PGTO     '
+//                      + 'ORDER BY A.ID_COMPRA');
+
+  // OPÇÕES DE PESQUISA
+  case cb_chave_pesquisa.ItemIndex of
+//    0:
+//      begin // pesquisa por c
+//        Q_pesq_padrao.SQL.Add('WHERE A.ID_COMPRA =:PID_COMPRA'); // criamos o parametro
+//        Q_pesq_padrao.ParamByName('PID_COMPRA').AsString := ed_nome.Text;// aponta para o campo do parametro
+//      end;
+//
+//    1:
+//      begin // pesquisa por nome
+//        Q_pesq_padrao.SQL.Add('WHERE A.USUARIO LIKE :PUSUARIO');// criamos o parametro
+//        Q_pesq_padrao.ParamByName('PUSUARIO').AsString := '%' + ed_nome.Text + '%'; // aponta para o campo do parametro
+//
+//      end;
+//
+//    2:
+//      begin
+//        Q_pesq_padrao.SQL.Add('WHERE A.ID_FORNECEDOR =:PID_FORNECEDOR');// criamos o parametro
+//        Q_pesq_padrao.ParamByName('PID_FORNECEDOR').AsString := ed_nome.Text;
+//      end;
+//
+//    3:
+//      begin // pesquisa por data
+//        Q_pesq_padrao.SQL.Add('WHERE A.ID_FORMA_PGTO =:PID_FORMA_PGTO');// criamos o parametro
+//        Q_pesq_padrao.ParamByName('PID_FORMA_PGTO').AsString:=ed_nome.Text;
+//      end;
+//
+//    4:
+//      begin // pesquisa por data
+//        Q_pesq_padrao.SQL.Add('WHERE A.CADASTRO =:PCADASTRO');// criamos o parametro
+//        Q_pesq_padrao.ParamByName('PCADASTRO').AsDate:=strToDate(mk_inicio.Text);
+//      end;
+//
+//    5:
+//      begin // pesquisa por periodo
+//        Q_pesq_padrao.SQL.Add('WHERE A.CADASTRO BETWEEN :PINICIO AND :PFIM');
+//        Q_pesq_padrao.ParamByName('PINICIO').AsDate := strTodate(mk_inicio.Text);
+//        Q_pesq_padrao.ParamByName('PFIM').AsDate := strTodate(mk_fim.Text);
+//      end;
+
+    6:
+      begin
+        Q_pesq_padrao.SQL.Add('ORDER BY A.ID_COMPRA');
+
+      end;
+
+
+  end;
+
+  // abre a query mostra o resultado
+  Q_pesq_padrao.Open;
+
+  // Mostra a quantidade de registros encontrados
+  // lb_Resultado.Caption:=' Total de Registros Localizados:   ' +
+  IntTostr(Q_pesq_padrao.recordcount);
+
+  // se nada for encontrado mostra a msg
+  if Q_pesq_padrao.IsEmpty then
+  begin
+    Messagedlg('Registro não encontrado!', MtInformation, [mbOk], 0);
+  end
+  else
+    abort;
+end;
+
+end.

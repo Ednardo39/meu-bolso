@@ -1,0 +1,86 @@
+inherited Frm_pesquisa_Usuario: TFrm_pesquisa_Usuario
+  Caption = 'Frm_pesquisa_Usuario'
+  ClientHeight = 456
+  ExplicitHeight = 494
+  TextHeight = 15
+  inherited Panel1: TPanel
+    inherited cb_chave_pesquisa: TComboBox
+      OnChange = cb_chave_pesquisaChange
+    end
+    inherited bt_Pesquisa: TBitBtn
+      OnClick = bt_PesquisaClick
+    end
+    inherited bt_Transferir: TBitBtn
+      OnClick = bt_TransferirClick
+    end
+    inherited bt_Imprimir: TBitBtn
+      OnClick = bt_ImprimirClick
+    end
+  end
+  inherited Frm_pesquisa_padrao: TDBGrid
+    Height = 383
+    BorderStyle = bsNone
+    DataSource = ds_pesq_padrao
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'ID_USUARIO'
+        Title.Caption = 'COD.USUARIO'
+        Width = 90
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TIPO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CADASTRO'
+        Visible = True
+      end>
+  end
+  inherited Q_pesq_padrao: TFDQuery
+    SQL.Strings = (
+      'SELECT '
+      '      ID_USUARIO,'
+      '      NOME,'
+      '      TIPO,'
+      '      CADASTRO'
+      'FROM USUARIO'
+      'ORDER BY ID_USUARIO')
+    object Q_pesq_padraoID_USUARIO: TIntegerField
+      FieldName = 'ID_USUARIO'
+      Origin = 'ID_USUARIO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object Q_pesq_padraoNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 50
+    end
+    object Q_pesq_padraoTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      Required = True
+      Size = 30
+    end
+    object Q_pesq_padraoCADASTRO: TDateField
+      FieldName = 'CADASTRO'
+      Origin = 'CADASTRO'
+      Required = True
+    end
+  end
+  inherited REL_pesq_padrao: TfrxReport
+    Datasets = <>
+    Variables = <>
+    Style = <>
+  end
+end

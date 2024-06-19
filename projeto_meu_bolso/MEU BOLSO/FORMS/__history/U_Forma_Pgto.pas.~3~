@@ -1,0 +1,37 @@
+unit U_Forma_Pgto;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, U_CadPadrao, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.DBCtrls, Vcl.ExtCtrls, Vcl.Mask;
+
+type
+  TFrm_Forma_pgto = class(Tfrm_CadPadrao)
+    Q_PadraoID_FORMA_PGTO: TFDAutoIncField;
+    Q_PadraoDESCRICAO: TStringField;
+    Q_PadraoCADASTRO: TDateField;
+    Label2: TLabel;
+    DBEdit1: TDBEdit;
+    Label3: TLabel;
+    txt_Descricao: TDBEdit;
+    Label4: TLabel;
+    txt_Cadastro: TDBEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frm_Forma_pgto: TFrm_Forma_pgto;
+
+implementation
+
+{$R *.dfm}
+
+end.

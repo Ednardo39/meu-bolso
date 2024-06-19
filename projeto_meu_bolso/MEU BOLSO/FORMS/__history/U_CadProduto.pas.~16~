@@ -1,0 +1,97 @@
+unit U_CadProduto;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, U_CadPadrao, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.DBCtrls, Vcl.ExtCtrls, Vcl.Mask;
+
+type
+  Tfrm_CadProduto = class(Tfrm_CadPadrao)
+    Q_PadraoID_PRODUTO: TIntegerField;
+    Q_PadraoPRODUTO_DESCRICAO: TStringField;
+    Q_PadraoVL_CUSTO: TFMTBCDField;
+    Q_PadraoVL_VENDA: TFMTBCDField;
+    Q_PadraoESTOQUE: TFMTBCDField;
+    Q_PadraoESTOQUE_MIN: TFMTBCDField;
+    Q_PadraoUNIDADE: TStringField;
+    Q_PadraoCADASTRO: TDateField;
+    Q_PadraoID_FORNECEDOR: TIntegerField;
+    Panel4: TPanel;
+    Label2: TLabel;
+    DBEdit1: TDBEdit;
+    Label3: TLabel;
+    txt_Descricao: TDBEdit;
+    Label4: TLabel;
+    txt_Cadastro: TDBEdit;
+    Label5: TLabel;
+    txt_Custo: TDBEdit;
+    Label6: TLabel;
+    txt_Venda: TDBEdit;
+    Label7: TLabel;
+    txt_Estoque: TDBEdit;
+    Label8: TLabel;
+    Label9: TLabel;
+    txt_IdForn: TDBEdit;
+    Q_PadraoNOME: TStringField;
+    Label10: TLabel;
+    txt_NomeForn: TDBEdit;
+    Label11: TLabel;
+    txt_EstoqueMin: TDBEdit;
+    txt_Und: TDBComboBox;
+    procedure btn_NovoClick(Sender: TObject);
+    procedure btn_PesquisarClick(Sender: TObject);
+    procedure abre_Tela_Pesq_Produto();
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_CadProduto: Tfrm_CadProduto;
+
+implementation
+
+{$R *.dfm}
+
+uses U_Pesq_Produto;
+
+//uses U_Pesq_Produto;
+
+procedure Tfrm_CadProduto.abre_Tela_Pesq_Produto;
+begin
+frm_Pesq_Produto:=Tfrm_Pesq_Produto.Create(Self);
+frm_Pesq_Produto.ShowModal;
+try
+
+finally
+  frm_Pesq_Produto.Free;
+  frm_Pesq_Produto:=nil;
+end;
+end;
+
+procedure Tfrm_CadProduto.btn_NovoClick(Sender: TObject);
+begin
+  inherited;
+  btn_Cancelar.Enabled:= True;
+  txt_Cadastro.Text  := DateToStr(now);
+  txt_Descricao.SetFocus;
+end;
+
+procedure Tfrm_CadProduto.btn_PesquisarClick(Sender: TObject);
+begin
+  frm_Pesq_Produto:=Tfrm_Pesq_Produto.Create(Self);
+  frm_Pesq_Produto.ShowModal;
+  try
+
+  finally
+    frm_Pesq_Produto.Free;
+    frm_Pesq_Produto:=nil;
+  end;
+end;
+end.

@@ -1,0 +1,363 @@
+inherited frm_CadProduto: Tfrm_CadProduto
+  Caption = 'ED_DEVELOPER - TELA PRODUTO'
+  ClientHeight = 393
+  ClientWidth = 795
+  ExplicitWidth = 807
+  ExplicitHeight = 431
+  TextHeight = 15
+  inherited Panel2: TPanel
+    Top = 360
+    Width = 795
+    ExplicitTop = 359
+    ExplicitWidth = 791
+    inherited Label1: TLabel
+      Height = 31
+    end
+    inherited btn_Navigator: TDBNavigator
+      Width = 631
+      Hints.Strings = ()
+      ExplicitWidth = 627
+    end
+  end
+  inherited Panel3: TPanel
+    Width = 795
+    Height = 311
+    ExplicitWidth = 791
+    ExplicitHeight = 310
+    object Panel4: TPanel
+      Left = 204
+      Top = 26
+      Width = 542
+      Height = 255
+      BevelOuter = bvNone
+      TabOrder = 0
+      object Label2: TLabel
+        Left = 16
+        Top = 8
+        Width = 76
+        Height = 15
+        Caption = 'ID_PRODUTO'
+        FocusControl = DBEdit1
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label3: TLabel
+        Left = 16
+        Top = 56
+        Width = 128
+        Height = 15
+        Caption = 'PRODUTO_DESCRICAO'
+        FocusControl = txt_Descricao
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label4: TLabel
+        Left = 184
+        Top = 8
+        Width = 63
+        Height = 15
+        Caption = 'CADASTRO'
+        FocusControl = txt_Cadastro
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 16
+        Top = 104
+        Width = 58
+        Height = 15
+        Caption = 'VL_CUSTO'
+        FocusControl = txt_Custo
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 139
+        Top = 104
+        Width = 59
+        Height = 15
+        Caption = 'VL_VENDA'
+        FocusControl = txt_Venda
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label7: TLabel
+        Left = 266
+        Top = 104
+        Width = 53
+        Height = 15
+        Caption = 'ESTOQUE'
+        FocusControl = txt_Estoque
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label8: TLabel
+        Left = 16
+        Top = 156
+        Width = 54
+        Height = 15
+        Caption = 'UNIDADE'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label9: TLabel
+        Left = 16
+        Top = 204
+        Width = 95
+        Height = 15
+        Caption = 'ID_FORNECEDOR'
+        FocusControl = txt_IdForn
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label10: TLabel
+        Left = 143
+        Top = 204
+        Width = 35
+        Height = 15
+        Caption = 'NOME'
+        FocusControl = txt_NomeForn
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label11: TLabel
+        Left = 139
+        Top = 156
+        Width = 82
+        Height = 15
+        Caption = 'ESTOQUE_MIN'
+        FocusControl = txt_EstoqueMin
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object DBEdit1: TDBEdit
+        Left = 16
+        Top = 24
+        Width = 154
+        Height = 23
+        DataField = 'ID_PRODUTO'
+        DataSource = DS_Padrao
+        TabOrder = 0
+      end
+      object txt_Descricao: TDBEdit
+        Left = 16
+        Top = 75
+        Width = 350
+        Height = 23
+        CharCase = ecUpperCase
+        DataField = 'PRODUTO_DESCRICAO'
+        DataSource = DS_Padrao
+        TabOrder = 1
+      end
+      object txt_Cadastro: TDBEdit
+        Left = 184
+        Top = 24
+        Width = 154
+        Height = 23
+        DataField = 'CADASTRO'
+        DataSource = DS_Padrao
+        TabOrder = 6
+      end
+      object txt_Custo: TDBEdit
+        Left = 16
+        Top = 120
+        Width = 100
+        Height = 23
+        DataField = 'VL_CUSTO'
+        DataSource = DS_Padrao
+        TabOrder = 2
+      end
+      object txt_Venda: TDBEdit
+        Left = 139
+        Top = 120
+        Width = 100
+        Height = 23
+        DataField = 'VL_VENDA'
+        DataSource = DS_Padrao
+        TabOrder = 3
+      end
+      object txt_Estoque: TDBEdit
+        Left = 266
+        Top = 120
+        Width = 100
+        Height = 23
+        DataField = 'ESTOQUE'
+        DataSource = DS_Padrao
+        TabOrder = 4
+      end
+      object txt_IdForn: TDBEdit
+        Left = 16
+        Top = 220
+        Width = 95
+        Height = 23
+        DataField = 'ID_FORNECEDOR'
+        DataSource = DS_Padrao
+        TabOrder = 5
+      end
+      object txt_NomeForn: TDBEdit
+        Left = 143
+        Top = 220
+        Width = 100
+        Height = 23
+        CharCase = ecUpperCase
+        DataField = 'NOME'
+        DataSource = DS_Padrao
+        TabOrder = 7
+      end
+      object txt_EstoqueMin: TDBEdit
+        Left = 139
+        Top = 172
+        Width = 100
+        Height = 23
+        DataField = 'ESTOQUE_MIN'
+        DataSource = DS_Padrao
+        TabOrder = 8
+      end
+      object txt_Und: TDBComboBox
+        Left = 16
+        Top = 172
+        Width = 100
+        Height = 23
+        DataField = 'UNIDADE'
+        DataSource = DS_Padrao
+        Items.Strings = (
+          'UND'
+          'LT'
+          'PAC')
+        TabOrder = 9
+      end
+    end
+  end
+  inherited Panel1: TPanel
+    Width = 795
+    ExplicitWidth = 791
+    inherited btn_Pesquisar: TBitBtn
+      OnClick = btn_PesquisarClick
+    end
+  end
+  inherited Q_Padrao: TFDQuery
+    SQL.Strings = (
+      'SELECT A.ID_PRODUTO,'
+      '       A.PRODUTO_DESCRICAO,'
+      '       A.VL_CUSTO,'
+      '       A.VL_VENDA,'
+      '       A.ESTOQUE,'
+      '       A.ESTOQUE_MIN,'
+      '       A.UNIDADE,'
+      '       A.CADASTRO,'
+      '       A.ID_FORNECEDOR,'
+      '       B.NOME'
+      ' FROM PRODUTO A, FORNECEDOR B'
+      ' WHERE A.ID_FORNECEDOR=B.ID_FORNECEDOR')
+    Left = 736
+    object Q_PadraoID_PRODUTO: TIntegerField
+      FieldName = 'ID_PRODUTO'
+      Origin = 'ID_PRODUTO'
+      ProviderFlags = [pfInWhere, pfInKey]
+      Required = True
+    end
+    object Q_PadraoPRODUTO_DESCRICAO: TStringField
+      FieldName = 'PRODUTO_DESCRICAO'
+      Origin = 'PRODUTO_DESCRICAO'
+      Required = True
+      Size = 100
+    end
+    object Q_PadraoVL_CUSTO: TFMTBCDField
+      FieldName = 'VL_CUSTO'
+      Origin = 'VL_CUSTO'
+      Required = True
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object Q_PadraoVL_VENDA: TFMTBCDField
+      FieldName = 'VL_VENDA'
+      Origin = 'VL_VENDA'
+      Required = True
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object Q_PadraoESTOQUE: TFMTBCDField
+      FieldName = 'ESTOQUE'
+      Origin = 'ESTOQUE'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+    object Q_PadraoESTOQUE_MIN: TFMTBCDField
+      FieldName = 'ESTOQUE_MIN'
+      Origin = 'ESTOQUE_MIN'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+    object Q_PadraoUNIDADE: TStringField
+      FieldName = 'UNIDADE'
+      Origin = 'UNIDADE'
+      Size = 6
+    end
+    object Q_PadraoCADASTRO: TDateField
+      FieldName = 'CADASTRO'
+      Origin = 'CADASTRO'
+      Required = True
+    end
+    object Q_PadraoID_FORNECEDOR: TIntegerField
+      FieldName = 'ID_FORNECEDOR'
+      Origin = 'ID_FORNECEDOR'
+      Required = True
+    end
+    object Q_PadraoNOME: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 100
+    end
+  end
+  inherited DS_Padrao: TDataSource
+    Left = 736
+    Top = 145
+  end
+end

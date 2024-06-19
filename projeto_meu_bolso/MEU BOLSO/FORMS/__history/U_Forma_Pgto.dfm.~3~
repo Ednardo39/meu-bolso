@@ -1,0 +1,99 @@
+inherited Frm_Forma_pgto: TFrm_Forma_pgto
+  Caption = 'CADASTRO DE FORMAS DE PAGAMENTO'
+  ClientWidth = 815
+  TextHeight = 15
+  inherited Panel2: TPanel
+    Width = 815
+    inherited Label1: TLabel
+      Height = 31
+    end
+    inherited btn_Navigator: TDBNavigator
+      Hints.Strings = ()
+    end
+  end
+  inherited Panel3: TPanel
+    Width = 815
+    object Label2: TLabel
+      Left = 264
+      Top = 48
+      Width = 91
+      Height = 15
+      Caption = 'ID_FORMA_PGTO'
+      FocusControl = DBEdit1
+    end
+    object Label3: TLabel
+      Left = 264
+      Top = 96
+      Width = 63
+      Height = 15
+      Caption = 'DESCRICAO'
+      FocusControl = DBEdit2
+    end
+    object Label4: TLabel
+      Left = 361
+      Top = 48
+      Width = 60
+      Height = 15
+      Caption = 'CADASTRO'
+      FocusControl = DBEdit3
+    end
+    object DBEdit1: TDBEdit
+      Left = 264
+      Top = 64
+      Width = 91
+      Height = 23
+      DataField = 'ID_FORMA_PGTO'
+      DataSource = DS_Padrao
+      TabOrder = 0
+    end
+    object DBEdit2: TDBEdit
+      Left = 264
+      Top = 112
+      Width = 177
+      Height = 23
+      DataField = 'DESCRICAO'
+      DataSource = DS_Padrao
+      TabOrder = 1
+    end
+    object DBEdit3: TDBEdit
+      Left = 361
+      Top = 64
+      Width = 154
+      Height = 23
+      DataField = 'CADASTRO'
+      DataSource = DS_Padrao
+      TabOrder = 2
+    end
+  end
+  inherited Panel1: TPanel
+    Width = 815
+  end
+  inherited Q_Padrao: TFDQuery
+    UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
+    UpdateOptions.FetchGeneratorsPoint = gpImmediate
+    UpdateOptions.GeneratorName = 'GEN_ID_FORMA_PGTO'
+    UpdateOptions.AutoIncFields = 'ID_FORMA_PGTO'
+    SQL.Strings = (
+      'SELECT ID_FORMA_PGTO,'
+      '       DESCRICAO,'
+      '       CADASTRO'
+      '      FROM FORMA_PGTO'
+      '      ORDER BY ID_FORMA_PGTO')
+    object Q_PadraoID_FORMA_PGTO: TFDAutoIncField
+      FieldName = 'ID_FORMA_PGTO'
+      Origin = 'ID_FORMA_PGTO'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object Q_PadraoDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Required = True
+      Size = 25
+    end
+    object Q_PadraoCADASTRO: TDateField
+      FieldName = 'CADASTRO'
+      Origin = 'CADASTRO'
+      Required = True
+    end
+  end
+end

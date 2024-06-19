@@ -1,0 +1,105 @@
+unit U_CadFornecedor;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, U_CadPadrao, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.DBCtrls, Vcl.ExtCtrls, Vcl.Mask;
+
+type
+  Tfrm_CadFornecedor = class(Tfrm_CadPadrao)
+    Q_PadraoID_FORNECEDOR: TFDAutoIncField;
+    Q_PadraoNOME: TStringField;
+    Q_PadraoENDERECO: TStringField;
+    Q_PadraoNUMERO: TIntegerField;
+    Q_PadraoBAIRRO: TStringField;
+    Q_PadraoCIDADE: TStringField;
+    Q_PadraoUF: TStringField;
+    Q_PadraoCEP: TStringField;
+    Q_PadraoTELEFONE: TStringField;
+    Q_PadraoCNPJ: TStringField;
+    Q_PadraoEMAIL: TStringField;
+    Q_PadraoCADASTRO: TDateField;
+    Panel4: TPanel;
+    Label3: TLabel;
+    txt_Cadastro: TDBEdit;
+    Label4: TLabel;
+    txt_Nome: TDBEdit;
+    Label5: TLabel;
+    txt_End: TDBEdit;
+    Label6: TLabel;
+    txt_Num: TDBEdit;
+    Label7: TLabel;
+    txt_Bairro: TDBEdit;
+    Label8: TLabel;
+    txt_Cidade: TDBEdit;
+    Label9: TLabel;
+    txt_UF: TDBEdit;
+    Label10: TLabel;
+    txt_CEP: TDBEdit;
+    Label11: TLabel;
+    txt_Tel: TDBEdit;
+    Label12: TLabel;
+    txt_CNPJ: TDBEdit;
+    Label13: TLabel;
+    txt_Email: TDBEdit;
+    Label2: TLabel;
+    DBEdit1: TDBEdit;
+    procedure btn_NovoClick(Sender: TObject);
+    procedure btn_PesquisarClick(Sender: TObject);
+    procedure abre_Tela_Pesq_Fornecedor();
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_CadFornecedor: Tfrm_CadFornecedor;
+
+implementation
+
+{$R *.dfm}
+
+uses U_Frm_Pesq_Fornecedor;
+
+procedure Tfrm_CadFornecedor.abre_Tela_Pesq_Fornecedor;
+begin
+Frm_pesq_Fornecedor:=TFrm_pesq_Fornecedor.Create(Self);
+Frm_pesq_Fornecedor.ShowModal;
+try
+
+finally
+  Frm_pesq_Fornecedor.Free;
+  Frm_pesq_Fornecedor:=nil;
+end;
+end;
+
+procedure Tfrm_CadFornecedor.btn_NovoClick(Sender: TObject);
+begin
+  inherited;
+  btn_Cancelar.Enabled:= True;
+  txt_Cadastro.Text:=DateToStr(now);
+  txt_Nome.SetFocus;
+end;
+
+procedure Tfrm_CadFornecedor.btn_PesquisarClick(Sender: TObject);
+begin
+  Frm_pesq_Fornecedor:=TFrm_pesq_Fornecedor.Create(Self);
+  Frm_pesq_Fornecedor.ShowModal;
+  try
+    if Frm_pesq_Fornecedor.codigo > 0 then
+    begin
+      Q_Padrao.Open();
+      Q_Padrao.Locate('ID_FORNECEDOR', Frm_pesq_Fornecedor.codigo, []);
+    end;
+  finally
+    Frm_pesq_Fornecedor.Free;
+    Frm_pesq_Fornecedor:=nil;
+  end;
+end;
+end.

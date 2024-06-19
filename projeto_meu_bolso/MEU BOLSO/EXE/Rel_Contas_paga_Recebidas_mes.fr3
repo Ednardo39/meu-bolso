@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="6.6.15" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="167935" PreviewOptions.Zoom="1" PrintOptions.Printer="Padrão" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="43985,7522632407" ReportOptions.Description.Text="" ReportOptions.LastChange="43994,8740267593" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="frx_Conta_pagar" DataSetName="frx_Conta_pagar"/>
+    <item DataSet="frx_Conta_Receber" DataSetName="frx_Conta_Receber"/>
+  </Datasets>
+  <Variables>
+    <item Name=" Periodo"/>
+    <item Name="Data_inicial"/>
+    <item Name="Data_final"/>
+    <item Name="Usuario"/>
+  </Variables>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" MirrorMode="0" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="68,03154" Left="0" Top="18,89765" Width="718,1107">
+      <TfrxMemoView Name="Memo1" AllowVectorExport="True" Left="0" Top="3,77953" Width="718,1107" Height="22,67718" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="RELATÓRIO DE CONTAS PAGAS E RECEBIDAS POR PERÍODO"/>
+      <TfrxMemoView Name="Data_inicial" IndexTag="1" AllowVectorExport="True" Left="204,09462" Top="37,7953" Width="79,37013" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="[Data_inicial]"/>
+      <TfrxMemoView Name="Data_final" IndexTag="1" AllowVectorExport="True" Left="389,29159" Top="37,7953" Width="79,37013" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="[Data_final]"/>
+      <TfrxPictureView Name="Picture1" AllowVectorExport="True" Left="0" Top="0" Width="718,1107" Height="64,25201" Frame.Typ="15" HightQuality="False" Transparent="False" TransparentColor="16777215"/>
+    </TfrxReportTitle>
+    <TfrxPageHeader Name="PageHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="49,13389" Left="0" Top="109,60637" Width="718,1107">
+      <TfrxMemoView Name="Memo3" Align="baWidth" AllowVectorExport="True" Left="0" Top="3,77953" Width="718,1107" Height="22,67718" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="Dados de contas pagas"/>
+      <TfrxMemoView Name="Memo5" AllowVectorExport="True" Left="0" Top="26,45671" Width="75,5906" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="Mês:"/>
+      <TfrxMemoView Name="Memo6" AllowVectorExport="True" Left="75,5906" Top="26,45671" Width="75,5906" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="Ano:"/>
+      <TfrxMemoView Name="Memo7" AllowVectorExport="True" Left="162,51979" Top="26,45671" Width="94,48825" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="Valor:"/>
+    </TfrxPageHeader>
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22,67718" Left="0" Top="219,21274" Width="718,1107" ColumnWidth="0" ColumnGap="0" DataSet="frx_Conta_pagar" DataSetName="frx_Conta_pagar" RowCount="0">
+      <TfrxMemoView Name="frx_Conta_pagarMES" IndexTag="1" Align="baWidth" AllowVectorExport="True" Left="0" Top="0" Width="79,37013" Height="18,89765" DataField="MES" DataSet="frx_Conta_pagar" DataSetName="frx_Conta_pagar" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frx_Conta_pagar.&#34;MES&#34;]"/>
+      <TfrxMemoView Name="frx_Conta_pagarANO" IndexTag="1" Align="baWidth" AllowVectorExport="True" Left="79,37013" Top="0" Width="79,37013" Height="18,89765" DataField="ANO" DataSet="frx_Conta_pagar" DataSetName="frx_Conta_pagar" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frx_Conta_pagar.&#34;ANO&#34;]"/>
+      <TfrxMemoView Name="frx_Conta_pagarTOTAL_PAGO" IndexTag="1" Align="baWidth" AllowVectorExport="True" Left="158,74026" Top="0" Width="559,37044" Height="18,89765" DataField="TOTAL_PAGO" DataSet="frx_Conta_pagar" DataSetName="frx_Conta_pagar" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2m" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frx_Conta_pagar.&#34;TOTAL_PAGO&#34;]"/>
+    </TfrxMasterData>
+    <TfrxMasterData Name="MasterData2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22,67718" Left="0" Top="340,1577" Width="718,1107" ColumnWidth="0" ColumnGap="0" DataSet="frx_Conta_Receber" DataSetName="frx_Conta_Receber" RowCount="0">
+      <TfrxMemoView Name="frx_Conta_ReceberMES" IndexTag="1" Align="baWidth" AllowVectorExport="True" Left="0" Top="0" Width="79,37013" Height="18,89765" DataField="MES" DataSet="frx_Conta_Receber" DataSetName="frx_Conta_Receber" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frx_Conta_Receber.&#34;MES&#34;]"/>
+      <TfrxMemoView Name="frx_Conta_ReceberANO" IndexTag="1" Align="baWidth" AllowVectorExport="True" Left="79,37013" Top="0" Width="79,37013" Height="18,89765" DataField="ANO" DataSet="frx_Conta_Receber" DataSetName="frx_Conta_Receber" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frx_Conta_Receber.&#34;ANO&#34;]"/>
+      <TfrxMemoView Name="frx_Conta_ReceberTOTAL_RECEBIDO" IndexTag="1" Align="baWidth" AllowVectorExport="True" Left="158,74026" Top="0" Width="559,37044" Height="18,89765" DataField="TOTAL_RECEBIDO" DataSet="frx_Conta_Receber" DataSetName="frx_Conta_Receber" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2m" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frx_Conta_Receber.&#34;TOTAL_RECEBIDO&#34;]"/>
+    </TfrxMasterData>
+    <TfrxReportSummary Name="ReportSummary1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="49,13389" Left="0" Top="423,30736" Width="718,1107">
+      <TfrxMemoView Name="Usuario" IndexTag="1" Align="baWidth" AllowVectorExport="True" Left="132,28355" Top="26,45671" Width="226,7718" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[Usuario]"/>
+      <TfrxMemoView Name="Memo2" Align="baWidth" AllowVectorExport="True" Left="0" Top="26,45671" Width="132,28355" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Emitido por:"/>
+      <TfrxMemoView Name="Date" IndexTag="1" Align="baWidth" AllowVectorExport="True" Left="359,05535" Top="26,45671" Width="94,48825" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[Date]"/>
+      <TfrxMemoView Name="Time" IndexTag="1" Align="baWidth" AllowVectorExport="True" Left="453,5436" Top="26,45671" Width="264,5671" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[Time]"/>
+    </TfrxReportSummary>
+    <TfrxHeader Name="Header1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Height="52,91342" Left="0" ParentFont="False" Top="264,5671" Width="718,1107">
+      <TfrxMemoView Name="Memo4" Align="baWidth" AllowVectorExport="True" Left="0" Top="0" Width="718,1107" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="Dados de Contas Recebidas"/>
+      <TfrxMemoView Name="Memo8" AllowVectorExport="True" Left="83,14966" Top="34,01577" Width="75,5906" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="Ano:"/>
+      <TfrxMemoView Name="Memo9" AllowVectorExport="True" Left="170,07885" Top="34,01577" Width="94,48825" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="Valor:"/>
+      <TfrxMemoView Name="Memo10" AllowVectorExport="True" Left="0" Top="34,01577" Width="75,5906" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="Mês:"/>
+    </TfrxHeader>
+  </TfrxReportPage>
+</TfrxReport>

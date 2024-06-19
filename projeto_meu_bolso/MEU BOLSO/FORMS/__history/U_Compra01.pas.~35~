@@ -1,0 +1,146 @@
+unit U_Compra01;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, U_PadraoMovimento, Data.DB,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.DBCtrls,
+  Vcl.ExtCtrls, Vcl.Mask;
+
+type
+  Tfrm_Compra01 = class(Tfrm_PadraoMovimento)
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label8: TLabel;
+    Bt_Check_Fornecedor: TBitBtn;
+    bt_busca_forma_pgto: TBitBtn;
+    Q_PadraoID_COMPRAA: TFDAutoIncField;
+    Q_PadraoID_FORNECEDOR: TIntegerField;
+    Q_PadraoID_FORMA_PGTO: TIntegerField;
+    Q_PadraoUSUARIO: TStringField;
+    Q_PadraoVALOR: TFMTBCDField;
+    Q_PadraoCADASTRO: TDateField;
+    txt_IdCompra: TDBEdit;
+    txt_IdFormaPGTO: TDBEdit;
+    txt_Cadastro: TDBEdit;
+    txt_Usuario: TDBEdit;
+    txt_Valor: TDBEdit;
+    txt_IdFornecedor: TDBEdit;
+    Q_Fornecedor: TFDQuery;
+    Q_FormaPgto: TFDQuery;
+    ds_Fornecedor: TDataSource;
+    ds_FormaPgto: TDataSource;
+    Q_FornecedorID_FORNECEDOR: TIntegerField;
+    Q_FornecedorNOME: TStringField;
+    Q_FormaPgtoID_FORMA_PGTO: TIntegerField;
+    Q_FormaPgtoDESCRICAO: TStringField;
+    Q_PadraoNOME: TStringField;
+    Q_PadraoDESCRICAO: TStringField;
+    Label7: TLabel;
+    Label9: TLabel;
+    txt_Nome: TDBLookupComboBox;
+    txt_Descricao: TDBLookupComboBox;
+    Q_Padrao_ItemID_SEQUENCIA: TIntegerField;
+    Q_Padrao_ItemID_COMPRA: TIntegerField;
+    Q_Padrao_ItemID_PRODUTO: TIntegerField;
+    Q_Padrao_ItemQTDE: TFMTBCDField;
+    Q_Padrao_ItemVL_CUSTO: TFMTBCDField;
+    Q_Padrao_ItemDESCONTO: TFMTBCDField;
+    Q_Padrao_ItemTOTAL_ITEM: TFMTBCDField;
+    Label10: TLabel;
+    txt_IdProduto: TDBEdit;
+    Label11: TLabel;
+    txt_qtde: TDBEdit;
+    Label12: TLabel;
+    txt_vlCusto: TDBEdit;
+    Label13: TLabel;
+    txt_TotoalItens: TDBEdit;
+    Label14: TLabel;
+    txt_Desconto: TDBEdit;
+    Q_Produto: TFDQuery;
+    Q_Padrao_ItemDESCRICAO: TStringField;
+    procedure btn_NovoClick(Sender: TObject);
+    procedure bt_itemClick(Sender: TObject);
+    procedure txt_IdProdutoExit(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_Compra01: Tfrm_Compra01;
+
+implementation
+
+{$R *.dfm}
+
+procedure Tfrm_Compra01.btn_NovoClick(Sender: TObject);
+begin
+  inherited;
+//  Q_padrao.Open;
+//  Q_fornecedor.Open;
+//  Q_forma_pgto.Open;
+//  db_cadastro.Text:=datetostr(now);
+//  db_usuario.Text:=dm.usuario;
+//  db_valor.Text:=inttostr(0);
+//  db_id_fornecedor.SetFocus;
+//  db_cond_pgto.Text:=inttostr(1);
+
+   Q_PadraoCADASTRO.AsDateTime:=Date;
+//   Q_PadraoUSUARIO.AsString:=DM.USUARIO;
+   Q_PadraoUSUARIO.AsString:='EU';
+   txt_IdFornecedor.SetFocus;
+//   txt_Valor.Text:=inttostr(0);
+   Q_PadraoVALOR.AsCurrency:=0;
+end;
+
+procedure Tfrm_Compra01.bt_itemClick(Sender: TObject);
+ var proximo:integer;
+begin
+   //INSERE OS ITENS NA TABELA DE ITENS COMPRA
+     Q_padrao_item.open;//open
+     Q_padrao_item.Last;// vai para o ultimo registro
+     proximo:=Q_padrao_itemID_SEQUENCIA.AsInteger + 1; // recebe o valor do campo id_seqencia e + 1
+     Q_padrao_item.Append;// abre uma nova linha para inserir registro
+     Q_padrao_itemID_SEQUENCIA.AsInteger:=proximo;// o campo id sequencia recebe o conteudo da var proximo
+     txt_idproduto.SetFocus;// o foco vai para o campo idproduto
+
+end;
+
+procedure Tfrm_Compra01.txt_IdProdutoExit(Sender: TObject);
+begin
+  if Q_padrao_item.State in [dsedit,dsinsert] then
+ begin
+    if Q_padrao_itemID_PRODUTO.AsInteger > 0 then
+      if Q_produto.Locate('ID_PRODUTO',Q_padrao_item.FieldByName('ID_PRODUTO').AsInteger,[]) then       begin
+         Q_padrao_itemQTDE.AsFloat:=1;
+         Q_padrao_itemDESCONTO.AsFloat:=0;
+         // pagar o valor do produto
+         Q_padrao_itemVL_CUSTO.AsFloat:=
+         Q_produto.FieldByName('vl_custo').AsFloat;
+         //soma qtde
+         Q_padrao_itemTOTAL_ITEM.AsFloat:=
+         (Q_padrao_itemQTDE.AsFloat * Q_padrao_itemVL_CUSTO.AsFloat)-
+         (Q_padrao_itemDESCONTO.AsFloat);
+         Q_padrao_item.Post;
+         bt_item.SetFocus;
+     end
+     else
+      Messagedlg('Produto não encontrado!',mtInformation,[mbOk],0);
+      Q_padrao_item.Cancel;
+      bt_item.SetFocus;
+      end
+     else
+     Abort;
+
+end;
+
+end.

@@ -1,0 +1,14 @@
+program MEU_BOLSO;
+
+uses
+  Vcl.Forms,
+  U_CadDespesas in 'U_CadDespesas.pas' {frmDespesas};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmDespesas, frmDespesas);
+  Application.Run;
+end.

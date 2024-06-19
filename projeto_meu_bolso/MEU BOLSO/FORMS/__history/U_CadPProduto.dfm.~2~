@@ -1,0 +1,45 @@
+inherited frm_CadPProduto: Tfrm_CadPProduto
+  Caption = 'ED_DEVELOPER - TELA PRODUTO'
+  ClientWidth = 793
+  ExplicitWidth = 805
+  TextHeight = 15
+  inherited Panel2: TPanel
+    Width = 793
+    ExplicitTop = 361
+    inherited btn_Navigator: TDBNavigator
+      Width = 629
+      Hints.Strings = ()
+    end
+  end
+  inherited Panel3: TPanel
+    Width = 793
+    ExplicitHeight = 312
+  end
+  inherited Panel1: TPanel
+    Width = 793
+  end
+  inherited Q_Padrao: TFDQuery
+    UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
+    UpdateOptions.FetchGeneratorsPoint = gpImmediate
+    UpdateOptions.GeneratorName = 'GEN_ID_PRODUTO'
+    UpdateOptions.AutoIncFields = 'ID_PRODUTO'
+    SQL.Strings = (
+      'SELECT A.ID_PRODUTO,'
+      '       A.PRODUTO_DESCRICAO,'
+      '       A.VL_CUSTO,'
+      '       A.VL_VENDA,'
+      '       A.ESTOQUE,'
+      '       A.ESTOQUE_MIN,'
+      '       A.UNIDADE,'
+      '       A.CADASTRO,'
+      '       A.ID_FORNECEDOR'
+      ' FROM PRODUTO A, FORNECEDOR B'
+      ' WHERE A.ID_FORNECEDOR=B.ID_FORNECEDOR')
+    Left = 728
+    Top = 65
+  end
+  inherited DS_Padrao: TDataSource
+    Left = 728
+    Top = 161
+  end
+end

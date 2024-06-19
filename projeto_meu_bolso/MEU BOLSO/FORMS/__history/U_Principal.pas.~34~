@@ -1,0 +1,177 @@
+unit U_Principal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ExtCtrls, Vcl.ComCtrls,
+  Vcl.Menus;
+
+type
+  Tfrm_Principal = class(TForm)
+    Panel1: TPanel;
+    btn_Usuario: TSpeedButton;
+    btn_Empresa: TSpeedButton;
+    btn_Cliente: TSpeedButton;
+    btn_FormPgto: TSpeedButton;
+    btn_Compras: TSpeedButton;
+    btn_Vendas: TSpeedButton;
+    btn_TrocarUser: TSpeedButton;
+    btn_Fornecedor: TSpeedButton;
+    btn_Produto: TSpeedButton;
+    Panel2: TPanel;
+    btn_Sair: TSpeedButton;
+    StatusBar1: TStatusBar;
+    Timer1: TTimer;
+    MainMenu1: TMainMenu;
+    Cadastro1: TMenuItem;
+    Cargo1: TMenuItem;
+    Cliente1: TMenuItem;
+    Empresa1: TMenuItem;
+    Fornecedor1: TMenuItem;
+    Formapgto1: TMenuItem;
+    Funcionrio1: TMenuItem;
+    Produto1: TMenuItem;
+    Usurio1: TMenuItem;
+    Movimentos1: TMenuItem;
+    Compras1: TMenuItem;
+    Vendas1: TMenuItem;
+    SobreoSistema1: TMenuItem;
+    ListadeClientes1: TMenuItem;
+    ListadeProdutos1: TMenuItem;
+    ListadeFornecedores1: TMenuItem;
+    ListadeProdutos2: TMenuItem;
+    ListadeUsurios1: TMenuItem;
+    ListadeVendas1: TMenuItem;
+    Sobre1: TMenuItem;
+    procedure Timer1Timer(Sender: TObject);
+    procedure btn_UsuarioClick(Sender: TObject);
+    procedure abre_Tela_Usuario();
+    procedure abre_Tela_Empresa();
+    procedure abre_Tela_Cliente();
+    procedure abre_Tela_Fornecedor();
+    procedure abre_Tela_Produto();
+    procedure btn_SairClick(Sender: TObject);
+    procedure btn_EmpresaClick(Sender: TObject);
+    procedure btn_ClienteClick(Sender: TObject);
+    procedure btn_FornecedorClick(Sender: TObject);
+    procedure btn_ProdutoClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_Principal: Tfrm_Principal;
+
+implementation
+
+{$R *.dfm}
+
+uses U_CadUsuario, U_CadEmpresa, U_CadCliente, U_CadFornecedor, U_CadProduto;
+
+procedure Tfrm_Principal.abre_Tela_Cliente;
+begin
+    frm_CadCliente:=Tfrm_CadCliente.Create(Self);
+    frm_CadCliente.ShowModal;
+  try
+
+  finally
+    frm_CadCliente.Free;
+    frm_CadCliente:=nil;
+  end;
+end;
+
+procedure Tfrm_Principal.abre_Tela_Empresa;
+begin
+  frm_CadEmpresa:= Tfrm_CadEmpresa.Create(Self);
+  frm_CadEmpresa.ShowModal;
+    try
+
+    finally
+      frm_CadEmpresa.Free;
+      frm_CadEmpresa:=nil;
+    end;
+end;
+
+procedure Tfrm_Principal.abre_Tela_Fornecedor;
+begin
+  frm_CadFornecedor:=Tfrm_CadFornecedor.Create(Self);
+  frm_CadFornecedor.ShowModal;
+    try
+
+    finally
+      frm_CadFornecedor.Free;
+      frm_CadFornecedor:=nil;
+    end;
+end;
+
+procedure Tfrm_Principal.abre_Tela_Produto;
+begin
+//  frm_CadProduto:= Tfrm_CadProduto.Create(Self);
+//  frm_CadProduto.ShowModal;
+//  try
+//
+//  finally
+//    frm_CadProduto.Free;
+//    frm_CadProduto:=nil;
+//  end;
+end;
+
+procedure Tfrm_Principal.abre_Tela_Usuario;
+begin
+  frm_CadUsuario:= Tfrm_CadUsuario.Create(Self);
+  frm_CadUsuario.ShowModal;
+    try
+
+    finally
+      frm_CadUsuario.Free;
+      frm_CadUsuario:=nil;
+    end;
+end;
+
+procedure Tfrm_Principal.btn_UsuarioClick(Sender: TObject);
+begin
+abre_Tela_Usuario;
+end;
+
+procedure Tfrm_Principal.btn_EmpresaClick(Sender: TObject);
+begin
+abre_Tela_Empresa;
+end;
+
+procedure Tfrm_Principal.btn_FornecedorClick(Sender: TObject);
+begin
+abre_Tela_Fornecedor;
+end;
+
+procedure Tfrm_Principal.btn_ProdutoClick(Sender: TObject);
+begin
+abre_Tela_Produto;
+end;
+
+procedure Tfrm_Principal.btn_ClienteClick(Sender: TObject);
+begin
+abre_Tela_Cliente;
+end;
+
+procedure Tfrm_Principal.btn_SairClick(Sender: TObject);
+begin
+  if messagedlg('Deseja sair do sistema?',mtConfirmation,[mbOk,mbNo],0)=mrOk then
+    begin
+      application.Terminate;
+    end
+    else
+    abort;
+end;
+
+procedure Tfrm_Principal.Timer1Timer(Sender: TObject);
+begin
+//Insere dados no statusbar
+Statusbar1.Panels[0].Text:=DateToStr(now);
+Statusbar1.Panels[1].Text:=TimeToStr(now);
+Statusbar1.Panels[2].Text:='SEJA BEM VINDO(A) AO SISTEMA';
+end;
+
+end.

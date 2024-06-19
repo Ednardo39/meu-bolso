@@ -1,0 +1,107 @@
+inherited Frm_Forma_pgto: TFrm_Forma_pgto
+  Caption = 'CADASTRO DE FORMAS DE PAGAMENTO'
+  ClientHeight = 227
+  ClientWidth = 815
+  ExplicitHeight = 265
+  TextHeight = 15
+  inherited Panel2: TPanel
+    Top = 194
+    Width = 815
+    inherited Label1: TLabel
+      Height = 31
+    end
+    inherited btn_Navigator: TDBNavigator
+      Hints.Strings = ()
+    end
+  end
+  inherited Panel3: TPanel
+    Width = 815
+    Height = 145
+    object Label2: TLabel
+      Left = 272
+      Top = 24
+      Width = 28
+      Height = 15
+      Caption = 'COD.'
+      FocusControl = DBEdit1
+    end
+    object Label3: TLabel
+      Left = 272
+      Top = 72
+      Width = 63
+      Height = 15
+      Caption = 'DESCRICAO'
+      FocusControl = txt_Descricao
+    end
+    object Label4: TLabel
+      Left = 369
+      Top = 24
+      Width = 60
+      Height = 15
+      Caption = 'CADASTRO'
+      FocusControl = txt_Cadastro
+    end
+    object DBEdit1: TDBEdit
+      Left = 272
+      Top = 40
+      Width = 63
+      Height = 23
+      DataField = 'ID_FORMA_PGTO'
+      DataSource = DS_Padrao
+      TabOrder = 0
+    end
+    object txt_Descricao: TDBEdit
+      Left = 272
+      Top = 88
+      Width = 201
+      Height = 23
+      CharCase = ecUpperCase
+      DataField = 'DESCRICAO'
+      DataSource = DS_Padrao
+      TabOrder = 1
+    end
+    object txt_Cadastro: TDBEdit
+      Left = 369
+      Top = 40
+      Width = 104
+      Height = 23
+      DataField = 'CADASTRO'
+      DataSource = DS_Padrao
+      TabOrder = 2
+    end
+  end
+  inherited Panel1: TPanel
+    Width = 815
+  end
+  inherited Q_Padrao: TFDQuery
+    UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
+    UpdateOptions.FetchGeneratorsPoint = gpImmediate
+    UpdateOptions.GeneratorName = 'GEN_ID_FORMA_PGTO'
+    UpdateOptions.AutoIncFields = 'ID_FORMA_PGTO'
+    SQL.Strings = (
+      'SELECT ID_FORMA_PGTO,'
+      '       DESCRICAO,'
+      '       CADASTRO'
+      '      FROM FORMA_PGTO'
+      '      ORDER BY ID_FORMA_PGTO')
+    object Q_PadraoID_FORMA_PGTO: TFDAutoIncField
+      FieldName = 'ID_FORMA_PGTO'
+      Origin = 'ID_FORMA_PGTO'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object Q_PadraoDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Required = True
+      Size = 25
+    end
+    object Q_PadraoCADASTRO: TDateField
+      FieldName = 'CADASTRO'
+      Origin = 'CADASTRO'
+      Required = True
+    end
+  end
+  inherited DS_Padrao: TDataSource
+    Top = 137
+  end
+end

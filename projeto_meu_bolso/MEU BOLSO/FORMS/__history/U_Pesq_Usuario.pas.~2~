@@ -1,0 +1,32 @@
+unit U_Pesq_Usuario;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, U_Pesq_Padrao, Data.DB,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls;
+
+type
+  TFrm_pesquisa_Usuario = class(TFrm_pesquisa_padrao)
+    Q_pesq_padraoID_USUARIO: TIntegerField;
+    Q_pesq_padraoNOME: TStringField;
+    Q_pesq_padraoTIPO: TStringField;
+    Q_pesq_padraoCADASTRO: TDateField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frm_pesquisa_Usuario: TFrm_pesquisa_Usuario;
+
+implementation
+
+{$R *.dfm}
+
+end.

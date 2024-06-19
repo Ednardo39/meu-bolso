@@ -1,0 +1,26 @@
+object DM: TDM
+  Height = 375
+  Width = 314
+  object Conexao: TFDConnection
+    Params.Strings = (
+      
+        'Database=C:\ED_DEVELOPER CONTROLE DE ESTOQUE\EXE\BANCO\ED_DEVELO' +
+        'PER_CONTROLE_DE_ESTOQUE.FDB'
+      'User_Name=SYSDBA'
+      'Password=masterkey'
+      'Protocol=TCPIP'
+      'CharacterSet=WIN1253'
+      'DriverID=FB')
+    Left = 24
+    Top = 32
+  end
+  object Transaction: TFDTransaction
+    Connection = Conexao
+    Left = 24
+    Top = 104
+  end
+  object FDPhysFBDriverLink1: TFDPhysFBDriverLink
+    Left = 16
+    Top = 192
+  end
+end

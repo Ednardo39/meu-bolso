@@ -1,0 +1,155 @@
+unit U_CadPadrao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.DBCtrls;
+
+type
+  Tfrm_CadPadrao = class(TForm)
+    Panel2: TPanel;
+    Label1: TLabel;
+    Panel3: TPanel;
+    Q_Padrao: TFDQuery;
+    DS_Padrao: TDataSource;
+    btn_Navigator: TDBNavigator;
+    Panel1: TPanel;
+    btn_novo: TBitBtn;
+    btn_Deletar: TBitBtn;
+    btn_Editar: TBitBtn;
+    btn_Salvar: TBitBtn;
+    btn_Cancelar: TBitBtn;
+    btn_Atualizar: TBitBtn;
+    btn_Pesquisar: TBitBtn;
+    btn_Sair: TBitBtn;
+    procedure btn_NovoClick(Sender: TObject);
+    procedure btn_SalvarClick(Sender: TObject);
+    procedure btn_EditarClick(Sender: TObject);
+    procedure btn_CancelarClick(Sender: TObject);
+    procedure btn_SairClick(Sender: TObject);
+    procedure desabilitar_Botoes();
+    procedure trataBotoes();
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure btn_DeletarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_CadPadrao: Tfrm_CadPadrao;
+
+implementation
+
+{$R *.dfm}
+
+uses U_DM;
+
+procedure Tfrm_CadPadrao.btn_CancelarClick(Sender: TObject);
+begin
+Tratabotoes;
+ Q_padrao.Cancel;
+ Messagedlg('Ação cancelada pelo usuário!',mtInformation,[mbOk],0);
+end;
+
+procedure Tfrm_CadPadrao.btn_DeletarClick(Sender: TObject);
+begin
+//desabilitar_Botoes;
+trataBotoes;
+if messagedlg('Deseja deletar este registro?',mtConfirmation,[mbOk,mbNo],0)=mrOk then
+    begin
+      Q_Padrao.Delete;
+      Messagedlg('Registro deletado com sucesso.',mtInformation,[mbOk],0);
+      trataBotoes;
+    end
+    else
+    trataBotoes;
+    abort;
+end;
+
+procedure Tfrm_CadPadrao.btn_EditarClick(Sender: TObject);
+begin
+// abri para edição
+Tratabotoes;
+ if messagedlg('Deseja editar este registro?',mtConfirmation,[mbOk,mbNo],0)=mrOk then
+    begin
+      Q_padrao.edit;
+    end
+    else
+    Tratabotoes;
+    abort;
+end;
+
+procedure Tfrm_CadPadrao.btn_NovoClick(Sender: TObject);
+begin
+//cria um nmovo registro
+Tratabotoes;
+Q_padrao.Open;
+q_padrao.Append;
+end;
+
+procedure Tfrm_CadPadrao.btn_SairClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure Tfrm_CadPadrao.btn_SalvarClick(Sender: TObject);
+begin
+//trataBotoes;
+//Q_padrao.Post;
+//MessageDlg('Registro salvo com sucesso!',mtInformation,[mbOk],0);
+//desabilitar_Botoes;
+//btn_Novo.Enabled := True;
+
+//salava o registro
+try
+ Q_padrao.Post;
+ Messagedlg('Registro salvo com sucesso!',mtInformation,[mbOk],0);
+  Tratabotoes;
+ except
+ ShowMessage('Erro nas gravação dos dados,verifique!');
+end;
+end;
+
+procedure Tfrm_CadPadrao.desabilitar_Botoes;
+begin
+btn_Novo.Enabled := False;
+btn_Deletar.Enabled := False;
+btn_Editar.Enabled := False;
+btn_Salvar.Enabled := False;
+btn_Navigator.Enabled := False;
+end;
+
+procedure Tfrm_CadPadrao.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+Q_padrao.Close;
+end;
+
+procedure Tfrm_CadPadrao.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+//Faz a tecla enter assumir a função da tecla TAB
+ if key=#13 then
+  begin
+    Key:=#0;
+    Perform(WM_NEXTDLGCTL,0,0);
+  end;
+end;
+
+procedure Tfrm_CadPadrao.trataBotoes;
+begin
+btn_novo.Enabled:= not btn_Novo.Enabled;
+btn_deletar.Enabled:= not btn_deletar.Enabled;
+btn_editar.Enabled:= not btn_editar.Enabled;
+btn_salvar.Enabled:= not btn_salvar.Enabled;
+btn_cancelar.Enabled:= not btn_cancelar.Enabled;
+btn_atualizar.Enabled:=not btn_atualizar.Enabled;
+//btn_Navigator.Enabled:= not btn_Navigator.Enabled;
+end;
+end.

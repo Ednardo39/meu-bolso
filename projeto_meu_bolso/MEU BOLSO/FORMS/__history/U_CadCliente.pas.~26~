@@ -1,0 +1,102 @@
+unit U_CadCliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, U_CadPadrao, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.StdCtrls,
+  Vcl.Buttons, Vcl.ExtCtrls, Vcl.Mask;
+
+type
+  Tfrm_CadCliente = class(Tfrm_CadPadrao)
+    Q_PadraoID_CLIENTE: TFDAutoIncField;
+    Q_PadraoNOME: TStringField;
+    Q_PadraoENDERECO: TStringField;
+    Q_PadraoNUMERO: TIntegerField;
+    Q_PadraoBAIRRO: TStringField;
+    Q_PadraoCIDADE: TStringField;
+    Q_PadraoCEP: TStringField;
+    Q_PadraoTELEFONE: TStringField;
+    Q_PadraoCPF: TStringField;
+    Q_PadraoEMAIL: TStringField;
+    Q_PadraoCADASTRO: TDateField;
+    pnl_Forms: TPanel;
+    Label2: TLabel;
+    DBEdit1: TDBEdit;
+    Label3: TLabel;
+    txt_Nome: TDBEdit;
+    Label4: TLabel;
+    txt_Cadastro: TDBEdit;
+    Label5: TLabel;
+    txt_CPF: TDBEdit;
+    Label6: TLabel;
+    DBEdit5: TDBEdit;
+    Label7: TLabel;
+    DBEdit6: TDBEdit;
+    Label8: TLabel;
+    DBEdit7: TDBEdit;
+    Label9: TLabel;
+    DBEdit8: TDBEdit;
+    Label10: TLabel;
+    DBEdit9: TDBEdit;
+    Label11: TLabel;
+    DBEdit10: TDBEdit;
+    Label12: TLabel;
+    DBEdit11: TDBEdit;
+    procedure FormCreate(Sender: TObject);
+    procedure btn_NovoClick(Sender: TObject);
+    procedure btn_SalvarClick(Sender: TObject);
+    procedure btn_CancelarClick(Sender: TObject);
+    procedure btn_SairClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_CadCliente: Tfrm_CadCliente;
+
+implementation
+
+{$R *.dfm}
+
+procedure Tfrm_CadCliente.btn_CancelarClick(Sender: TObject);
+begin
+  inherited;
+  btn_Novo.Enabled := True;
+//  btn_Navigator.Enabled := True;
+end;
+
+procedure Tfrm_CadCliente.btn_NovoClick(Sender: TObject);
+begin
+  inherited;
+//  btn_Novo.Enabled:= False;
+  btn_Cancelar.Enabled:= True;
+  txt_Cadastro.Text  := DateToStr(now);
+  txt_Nome.SetFocus;
+end;
+
+procedure Tfrm_CadCliente.btn_SairClick(Sender: TObject);
+begin
+  inherited;
+  Self.Cascade;
+end;
+
+procedure Tfrm_CadCliente.btn_SalvarClick(Sender: TObject);
+begin
+  inherited;
+//  btn_Navigator.Enabled:=True;
+end;
+
+procedure Tfrm_CadCliente.FormCreate(Sender: TObject);
+begin
+  inherited;
+  btn_Novo.Enabled:= True;
+//  btn_Navigator.Enabled:=True;
+end;
+
+end.

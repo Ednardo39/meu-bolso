@@ -1,0 +1,96 @@
+unit U_CadEmpresa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, U_CadPadrao, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.StdCtrls,
+  Vcl.Buttons, Vcl.ExtCtrls, Vcl.Mask;
+
+type
+  Tfrm_CadEmpresa = class(Tfrm_CadPadrao)
+    Q_PadraoID_EMPRESA: TFDAutoIncField;
+    Q_PadraoBAIRRO: TStringField;
+    Q_PadraoCADASTRO: TDateField;
+    Q_PadraoCIDADE: TStringField;
+    Q_PadraoCNPJ: TStringField;
+    Q_PadraoEMAIL: TStringField;
+    Q_PadraoENDERECO: TStringField;
+    Q_PadraoLOGO: TBlobField;
+    Q_PadraoN_FANTASIA: TStringField;
+    Q_PadraoNUMERO: TIntegerField;
+    Q_PadraoRAZA_SOCIAL: TStringField;
+    Q_PadraoTELEFONE: TStringField;
+    Q_PadraoUF: TStringField;
+    Label2: TLabel;
+    DBEdit1: TDBEdit;
+    Label3: TLabel;
+    txt_NomeFantasia: TDBEdit;
+    Label4: TLabel;
+    txt_Cadastro: TDBEdit;
+    Label5: TLabel;
+    txt_CNPJ: TDBEdit;
+    Label6: TLabel;
+    txt_End: TDBEdit;
+    Label7: TLabel;
+    txt_Bairro: TDBEdit;
+    Label8: TLabel;
+    txt_Num: TDBEdit;
+    Label9: TLabel;
+    txt_Cidade: TDBEdit;
+    Label10: TLabel;
+    txt_RazaoSocial: TDBEdit;
+    Label11: TLabel;
+    txt_Email: TDBEdit;
+    Label12: TLabel;
+    DBEdit9: TDBEdit;
+    Label13: TLabel;
+    txt_UF: TDBEdit;
+    Label14: TLabel;
+    DBImage1: TDBImage;
+    btn_Foto: TBitBtn;
+    btn_Clear: TBitBtn;
+    OpenDialog1: TOpenDialog;
+    procedure btn_NovoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btn_FotoClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_CadEmpresa: Tfrm_CadEmpresa;
+
+implementation
+
+{$R *.dfm}
+
+procedure Tfrm_CadEmpresa.btn_FotoClick(Sender: TObject);
+begin
+  Q_padrao.Edit;
+  opendialog1.Execute; // EXECUTA O OPENDIALOG
+  dbimage1.Picture.LoadFromFile(opendialog1.FileName); // RECEBE A IMAGEM SELECIONADA
+  Q_padrao.Refresh;  // ATUALIZA A q_QUERY
+  Messagedlg('Imagem inserida com sucesso!',mtInformation,[mbOk],0);  //MSG
+
+end;
+
+procedure Tfrm_CadEmpresa.btn_NovoClick(Sender: TObject);
+begin
+  inherited;
+  txt_Cadastro.Text:= DateToStr(now);
+  txt_NomeFantasia.SetFocus;
+end;
+
+procedure Tfrm_CadEmpresa.FormCreate(Sender: TObject);
+begin
+  inherited;
+  btn_Novo.Enabled:=True;
+end;
+
+end.
